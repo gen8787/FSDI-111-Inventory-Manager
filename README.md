@@ -19,7 +19,7 @@ Important note: The IT department has made it clear that they will limit access 
 
 - [ ] 2. Deletion is soft-delete only and there must be a way to re-activate soft-deleted items.
 
-- [ ] 3. The main product view must be an HTML table that allows you to see all products.
+- [x] 3. The main product view must be an HTML table that allows you to see all products.
 
     - [ ] 3.1. Products with a value of 100 or lower in the "quantity" column must be highlighted in red.
 
@@ -31,4 +31,4 @@ Important note: The IT department has made it clear that they will limit access 
 
 - [ ] 5. Your entire app must use bootstrap 4 for its graphical user interface.
 
-- [ ] 6. You must submit a link to your GitHub repository that hosts the code.
+- [x] 6. You must submit a link to your GitHub repository that hosts the code.

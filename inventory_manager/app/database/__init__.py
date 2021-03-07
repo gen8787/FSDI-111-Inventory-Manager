@@ -54,8 +54,17 @@ def update_product(product_id, values: dict):
 
 # ---- D E L E T E   P R O D U C T
 def delete_product(product_id):
-    query = "DELETE FROM product WHERE id=%s" % product_id
+    query = "UPDATE product SET is_active=False WHERE id=%s" % product_id
     cursor = get_db()
+    print(query)
     cursor.execute(query, ())
     cursor.commit()
     return True
+
+
+# ---- G E T   I N A C T I V E  P R O D U C T S
+def get_inactive_products():
+    cursor = get_db().execute("SELECT * FROM product WHERE is_active=0")
+    results = cursor.fetchall()
+    cursor.close()
+    return results

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products</title>
+    <style>
+        table {
+            width: 900px;
+            height: 150px;
+            border: 1px solid rgb(92, 88, 88);
+            text-align: left;
+        }
+        th {
+            border-bottom: 1px solid rgb(92, 88, 88);
+        }
+    </style>
+</head>
+<body>
+    <h1>Inactive Products</h1>
+
+    <div>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Action</th>
+                <th>Active</th>
+            </tr>
+            {% for prod in products %}
+                    <tr>
+                        <td><a href="/product/{{prod[0]}}">{{prod[0]}}</a></td>
+                        <td>{{prod[1]}}</td>
+                        <td>{{prod[2]}}</td>
+                        <td>{{prod[3]}}</td>
+                        <td><a href="/product/{{prod[0]}}">Details</a> | <a href="/product/{{prod[0]}}/remove">Activate</a></td>
+                        <td>{{prod[6]}}</td>
+                    </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <hr>
+
+    <a href="/products">Active Products</a>
+</body>
+</html>

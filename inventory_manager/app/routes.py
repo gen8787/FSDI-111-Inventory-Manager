@@ -4,7 +4,7 @@
 
 from inventory_manager.app import app
 from inventory_manager.app.database import *
-from flask import request, render_template
+from flask import request, render_template, redirect
 
 
 # ---- I N D E X
@@ -32,7 +32,7 @@ def add_product():
 @app.route("/products")
 def all_products():
     out = get_all_products()
-    return str(out)
+    return render_template("all_products.html", products = out)
 
 # ---- O N E   P R O D U C T
 @app.route("/product/<product_id>")
@@ -50,7 +50,15 @@ def edit_product(product_id):
 
 
 # ---- D E L E T E   P R O D U C T
-@app.route("/product/<int:product_id>/remove", methods=["DELETE"])
-def remove_user(product_id):
+@app.route("/product/<product_id>/remove", methods=["GET"])
+def remove_product(product_id):
     out = delete_product(product_id)
-    return str(out)
+    return redirect("/products")
+
+
+# ---- I N A C T I V E   P R O D U C T S
+@app.route("/products/inactive")
+def inactive_products():
+    out = get_inactive_products()
+    print(out)
+    return render_template("inactive.html", products = out)
