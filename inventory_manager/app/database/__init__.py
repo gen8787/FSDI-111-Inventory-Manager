@@ -36,7 +36,7 @@ def get_all_products():
 
 # ---- G E T   O N E   P R O D U C T
 def get_one_product(product_id):
-    cursor = get_db().execute("SELECT * FROM product WHERE id=%s" % product_id, ())
+    cursor = get_db().execute("SELECT * FROM product WHERE id = %s" % product_id, ())
     results = cursor.fetchall()
     cursor.close()
     return results
@@ -56,7 +56,6 @@ def update_product(product_id, values: dict):
 def delete_product(product_id):
     query = "UPDATE product SET is_active=False WHERE id=%s" % product_id
     cursor = get_db()
-    print(query)
     cursor.execute(query, ())
     cursor.commit()
     return True
@@ -64,7 +63,16 @@ def delete_product(product_id):
 
 # ---- G E T   I N A C T I V E  P R O D U C T S
 def get_inactive_products():
-    cursor = get_db().execute("SELECT * FROM product WHERE is_active=0")
+    cursor = get_db().execute("SELECT * FROM product WHERE is_active = 0")
     results = cursor.fetchall()
     cursor.close()
     return results
+
+
+# ---- A C T I V A T E   P R O D U C T
+def set_is_active(product_id):
+    query = "UPDATE product SET is_active = True WHERE id = %s" % product_id
+    cursor = get_db()
+    cursor.execute(query, ())
+    cursor.commit()
+    return True

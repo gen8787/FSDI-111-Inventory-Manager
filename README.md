@@ -17,17 +17,17 @@ Important note: The IT department has made it clear that they will limit access 
 
 - [x] 1. Users must be able to CRUD+S the product table data.
 
-- [ ] 2. Deletion is soft-delete only and there must be a way to re-activate soft-deleted items.
+- [x] 2. Deletion is soft-delete only and there must be a way to re-activate soft-deleted items.
 
 - [x] 3. The main product view must be an HTML table that allows you to see all products.
 
-    - [ ] 3.1. Products with a value of 100 or lower in the "quantity" column must be highlighted in red.
+    - [x] 3.1. Products with a value of 100 or lower in the "quantity" column must be highlighted in red.
 
-    - [ ] 3.2. Products with a value of 101 to 500 in the "quantity" column must be highlighted in yellow.
+    - [x] 3.2. Products with a value of 101 to 500 in the "quantity" column must be highlighted in yellow.
 
-    - [ ] 3.3. Products with a value of 501 or more in the "quantity" column must either be highlighted in green or the table's default color.
+    - [x] 3.3. Products with a value of 501 or more in the "quantity" column must either be highlighted in green or the table's default color.
 
-- [ ] 4. There must be a separate product view for (soft) deleted items that allows users to re-activate products.
+- [x] 4. There must be a separate product view for (soft) deleted items that allows users to re-activate products.
 
 - [ ] 5. Your entire app must use bootstrap 4 for its graphical user interface.
 

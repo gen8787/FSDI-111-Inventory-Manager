@@ -17,7 +17,7 @@
     </style>
 </head>
 <body>
-    <h1>All Products</h1>
+    <h1>Active Products</h1>
 
     <div>
         <table>
@@ -29,17 +29,28 @@
                 <th>Action</th>
                 <th>Active</th>
             </tr>
+
             {% for prod in products %}
-            {% if prod[6] == "True" %}
-                    <tr>
-                        <td><a href="/product/{{prod[0]}}">{{prod[0]}}</a></td>
-                        <td>{{prod[1]}}</td>
-                        <td>{{prod[2]}}</td>
-                        <td>{{prod[3]}}</td>
-                        <td><a href="/product/{{prod[0]}}">Details</a> | <a href="/product/{{prod[0]}}/remove">Deactivate</a></td>
-                        <td>{{prod[6]}}</td>
-                    </tr>
-            {% endif %}
+                {% if prod[6] == "True"  or prod[6] == 1 %}
+
+                    {% if prod[3] <= 20 %}
+                        <tr style="background-color: red">
+                    {% endif %}
+                    {% if prod[3] in range(21, 50 + 1, 1) %}
+                        <tr style="background-color: yellow">
+                    {% endif %}
+                    {% if prod[3] > 50 %}
+                        <tr style="background-color: green">
+                    {% endif %}
+
+                            <td><a href="/product/{{prod[0]}}">{{prod[0]}}</a></td>
+                            <td>{{prod[1]}}</td>
+                            <td>{{prod[2]}}</td>
+                            <td>{{prod[3]}}</td>
+                            <td><a href="/product/{{prod[0]}}">Details</a> | <a href="/product/{{prod[0]}}/remove">Deactivate</a></td>
+                            <td>{{prod[6]}}</td>
+                        </tr>
+                {% endif %}
             {% endfor %}
         </table>
     </div>

@@ -60,5 +60,11 @@ def remove_product(product_id):
 @app.route("/products/inactive")
 def inactive_products():
     out = get_inactive_products()
-    print(out)
     return render_template("inactive.html", products = out)
+
+
+# ---- A C T I V A T E  P R O D U C T
+@app.route("/product/<product_id>/activate")
+def activate_product(product_id):
+    out = set_is_active(product_id)
+    return redirect("/products/inactive")
