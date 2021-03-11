@@ -4,8 +4,43 @@
 
 {% block content %}
     <div class="container">
-        <h1>Inventory Manager</h1> <a href="/products">All Products</a>
+        <h1>Add Product</h1>
         <hr>
+
+        <div>
+            <form action="/product/add" method="post">
+
+                <div class="row">
+                    <div class="form-group col-3">
+                        <label for="name">Name</label>
+                        <input class="form-control" type="text" name="form-name" id="">
+                    </div>
+
+                    <div class="form-group col-3">
+                        <label for="price">Price</label>
+                        <input class="form-control" type="text" name="form-price" id="">
+                    </div>
+
+                    <div class="form-group col-3">
+                        <label for="quantity">Quantity</label>
+                        <input class="form-control" type="text" name="form-quantity" id="">
+                    </div>
+
+                    <div class="form-group col-3">
+                        <label for="category">Category</label>
+                        <input class="form-control" type="text" name="form-category" id="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" name="form-description" id="" rows="5"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add Product</button>
+
+            </form>
+        </div>
     </div>
     {{ super() }}
 {% endblock %}

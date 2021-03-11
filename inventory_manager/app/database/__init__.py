@@ -26,6 +26,16 @@ def create(name, price, quantity, description, category):
     return last_row_id
 
 
+# ---- C R E A T E   R E V I E W
+def create_review(name, review, product_id):
+    values = (name, review, product_id)
+    query = """INSERT INTO review(name, review, product_id) VALUES(?, ?, ?)"""
+    cursor = get_db()
+    last_row_id = cursor.execute(query, values).lastrowid
+    cursor.commit()
+    return last_row_id
+
+
 # ---- G E T   A L L   P R O D U C T S
 def get_all_products():
     cursor = get_db().execute("SELECT * FROM product", ())
@@ -37,6 +47,14 @@ def get_all_products():
 # ---- G E T   O N E   P R O D U C T
 def get_one_product(product_id):
     cursor = get_db().execute("SELECT * FROM product WHERE id = %s" % product_id, ())
+    results = cursor.fetchall()
+    cursor.close()
+    return results
+
+
+# ---- G E T   R E V I E W S
+def get_reviews(product_id):
+    cursor = get_db().execute("SELECT * FROM review WHERE product_id = %s" % product_id, ())
     results = cursor.fetchall()
     cursor.close()
     return results

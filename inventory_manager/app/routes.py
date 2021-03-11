@@ -16,16 +16,28 @@ def index():
 # ---- A D D   P R O D U C T
 @app.route("/product/add", methods=["POST"])
 def add_product():
-    data = request.json
+    data = request.form
     new_product = create(
-        data.get("name"),
-        data.get("price"),
-        data.get("quantity"),
-        data.get("description"),
-        data.get("category")
+        data.get("form-name"),
+        data.get("form-price"),
+        data.get("form-quantity"),
+        data.get("form-description"),
+        data.get("form-category")
     )
 
-    return {"ok": True, "message": "Success", "product": new_product}
+    return redirect("/")
+
+
+# ---- A D D   R E V I E W
+@app.route("/review/<product_id>/add", methods=["POST"])
+def add_review(product_id):
+    data = request.form
+    new_review = create_review(
+        data.get("form-name"),
+        data.get("form-review"),
+        product_id
+    )
+    return redirect("/products")
 
 
 # ---- A L L   P R O D U C T S
@@ -34,11 +46,13 @@ def all_products():
     out = get_all_products()
     return render_template("all_products.html", products = out)
 
+
 # ---- O N E   P R O D U C T
 @app.route("/product/<product_id>")
 def one_product(product_id):
     one_product = get_one_product(product_id)
-    return render_template("one_product.html", one_product = one_product)
+    reviews = get_reviews(product_id)
+    return render_template("one_product.html", one_product = one_product, reviews = reviews)
 
 
 # ---- E D I T   P R O D U C T
@@ -68,6 +82,7 @@ def inactive_products():
 def activate_product(product_id):
     out = set_is_active(product_id)
     return redirect("/products/inactive")
+
 
 # ---- P A G E   N O T   F O U N D
 @app.errorhandler(404)

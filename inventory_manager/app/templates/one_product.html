@@ -5,13 +5,51 @@
     <div class="container">
         <h1 class="mb-3">{{ one_product[0][1] }}</h1>
         <hr>
+        <div class="row">
+            <div class="col-4">
+                <h3>Id: {{ one_product[0][0] }}</h3>
+                <h3>Price: {{ "$%.2f"|format(one_product[0][2]) }}</h3>
+                <h3>Qty: {{ one_product[0][3] }}</h3>
+                <button class="mt-5 mr-1 btn btn-warning" onClick="buttonClick()">Edit</button>
 
-        <h3>Id: {{ one_product[0][0] }}</h3>
-        <h3>Price: {{ "$%.2f"|format(one_product[0][2]) }}</h3>
-        <h3>Qty: {{ one_product[0][3] }}</h3>
+                {% if one_product[0][6] == 1 or one_product[0][6] == "True" %}
+                <button class="mt-5 btn btn-danger" onClick="buttonClick()">Deactivate</button>
+                {% endif %}
+                {% if one_product[0][6] == 0 or one_product[0][6] == "False" %}
+                <button class="mt-5 btn btn-success" onClick="buttonClick()">Activate</button>
+                {% endif %}
+            </div>
+
+            <div class="col-8">
+                <form class="" action="/review/{{one_product[0][0]}}/add" method="post">
+        
+                    <div class="form-group">
+                        <label for="">Name</label>
+                        <input type="text" class="form-control" name="form-name">
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="">Review</label>
+                        <textarea class="form-control" rows="3" name="form-review"></textarea>
+                    </div>
+        
+                    <button type="submit" class="btn btn-primary">Add Review</button>
+        
+                </form>
+            </div>
+        </div>
+
+        <hr>
+        <h2 class="mb-3">Reviews</h2>
         <hr>
 
-        <hr class="mb-5">
+        {% for review in reviews %}
+        <div class="pl-5">
+            <h3>{{review[1]}}</h3>
+            <p>{{review[2]}}</p>
+            <hr>
+        </div>
+        {% endfor %}
 
     </div>
 
