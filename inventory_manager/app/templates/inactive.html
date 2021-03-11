@@ -1,49 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Products</title>
-    <style>
-        table {
-            width: 900px;
-            height: 150px;
-            border: 1px solid rgb(92, 88, 88);
-            text-align: left;
-        }
-        th {
-            border-bottom: 1px solid rgb(92, 88, 88);
-        }
-    </style>
-</head>
-<body>
-    <h1>Inactive Products</h1>
+{% extends "base.html" %}
+{% block title %} Inactive Products {% endblock %}
+<link rel="stylesheet" href="../static/css/style.css">
+{% block content %}
+    <div class="container">
+        <h1 class="mb-3">Inactive Products</h1>
 
-    <div>
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Action</th>
-                <th>Active</th>
-            </tr>
-            {% for prod in products %}
+        <div class="border rounded border-dark w-50 mx-1">
+            <table class="table table-bordered table-hover">
+                <thead>
                     <tr>
-                        <td><a href="/product/{{prod[0]}}">{{prod[0]}}</a></td>
-                        <td>{{prod[1]}}</td>
-                        <td>{{prod[2]}}</td>
-                        <td>{{prod[3]}}</td>
-                        <td><a href="/product/{{prod[0]}}">Details</a> | <a href="/product/{{prod[0]}}/activate">Activate</a></td>
-                        <td>{{prod[6]}}</td>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Action</th>
                     </tr>
-            {% endfor %}
-        </table>
+                </thead>
+
+                <tbody>
+
+                    {% for prod in products %}
+                    {% if prod[6] == "False"  or prod[6] == 0 %}
+
+                    {% if prod[3] <= 20 %}
+                        <tr class="table-danger">
+                    {% endif %}
+
+                    {% if prod[3] in range(21, 50 + 1, 1) %}
+                        <tr class="table-warning">
+                    {% endif %}
+
+                    {% if prod[3] > 50 %}
+                        <tr class="table-success">
+                    {% endif %}
+
+                            <th scope="row"><a href="/product/{{prod[0]}}">{{prod[0]}}</a></td>
+                            <td>{{prod[1]}}</td>
+                            <td>{{"$%.2f"|format(prod[2])}}</td>
+                            <td>{{prod[3]}}</td>
+                            <td><a href="/product/{{prod[0]}}">Details</a> &nbsp | &nbsp <a href="/product/{{prod[0]}}/activate">Activate</a></td>
+                        </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        <hr>
     </div>
-
-    <hr>
-
-    <a href="/products">Active Products</a>
-</body>
-</html>
+    {{ super() }}
+{% endblock %}

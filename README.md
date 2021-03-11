@@ -32,3 +32,5 @@ Important note: The IT department has made it clear that they will limit access 
 - [ ] 5. Your entire app must use bootstrap 4 for its graphical user interface.
 
 - [x] 6. You must submit a link to your GitHub repository that hosts the code.
+
+- [ ] 7. Users can submit product reviews that other users may read.

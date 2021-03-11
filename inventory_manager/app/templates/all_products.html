@@ -1,62 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Products</title>
-    <style>
-        table {
-            width: 900px;
-            height: 150px;
-            border: 1px solid rgb(92, 88, 88);
-            text-align: left;
-        }
-        th {
-            border-bottom: 1px solid rgb(92, 88, 88);
-        }
-    </style>
-</head>
-<body>
-    <h1>Active Products</h1>
+{% extends "base.html" %}
+{% block title %} Active Products {% endblock %}
 
-    <div>
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Action</th>
-                <th>Active</th>
-            </tr>
+{% block content %}
+    <div class="container">
+        <h1 class="mb-3">Active Products</h1>
 
-            {% for prod in products %}
-                {% if prod[6] == "True"  or prod[6] == 1 %}
+        <div class="border rounded border-dark w-50 mx-1">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
 
+                <tbody>
+                    
+                    {% for prod in products %}
+                    {% if prod[6] == "True"  or prod[6] == 1 %}
+                    
                     {% if prod[3] <= 20 %}
-                        <tr style="background-color: red">
+                        <tr class="table-danger">
                     {% endif %}
+
                     {% if prod[3] in range(21, 50 + 1, 1) %}
-                        <tr style="background-color: yellow">
+                        <tr class="table-warning">
                     {% endif %}
+
                     {% if prod[3] > 50 %}
-                        <tr style="background-color: green">
+                        <tr class="table-success">
                     {% endif %}
-
-                            <td><a href="/product/{{prod[0]}}">{{prod[0]}}</a></td>
+                                
+                            <th scope="row"><a href="{{ url_for('one_product', product_id=prod[0], _external=True) }}">{{prod[0]}}</a></td>
                             <td>{{prod[1]}}</td>
-                            <td>{{prod[2]}}</td>
+                            <td>{{"$%.2f"|format(prod[2])}}</td>
                             <td>{{prod[3]}}</td>
-                            <td><a href="/product/{{prod[0]}}">Details</a> | <a href="/product/{{prod[0]}}/remove">Deactivate</a></td>
-                            <td>{{prod[6]}}</td>
+                            <td><a href="/product/{{prod[0]}}">Details</a> &nbsp | &nbsp <a href="/product/{{prod[0]}}/remove">Deactivate</a></td>
                         </tr>
-                {% endif %}
-            {% endfor %}
-        </table>
-    </div>
+                            {% endif %}
+                            {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
-    <hr>
+    <hr class="mb-5">
 
-    <a href="/products/inactive">Inactive Products</a>
-</body>
-</html>
+</div>
+{{ super() }}
+{% endblock content %}

@@ -37,8 +37,8 @@ def all_products():
 # ---- O N E   P R O D U C T
 @app.route("/product/<product_id>")
 def one_product(product_id):
-    out = get_one_product(product_id)
-    return str(out)
+    one_product = get_one_product(product_id)
+    return render_template("one_product.html", one_product = one_product)
 
 
 # ---- E D I T   P R O D U C T
@@ -68,3 +68,8 @@ def inactive_products():
 def activate_product(product_id):
     out = set_is_active(product_id)
     return redirect("/products/inactive")
+
+# ---- P A G E   N O T   F O U N D
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404

@@ -1,0 +1,19 @@
+body {
+    background-image: linear-gradient(#bfdbf1, #6f97b6d2);
+    /* min-height: 100vh; */
+}
+
+.container {
+    min-height: 75vh;
+}
+
+table,
+thead {
+    background-color: white;
+}
+
+footer {
+    background-color: #2D3338;
+    min-height: 20vh;
+    color: white;
+}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %} One Product {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="mb-3">{{ one_product[0][1] }}</h1>
+        <hr>
+
+        <h3>Id: {{ one_product[0][0] }}</h3>
+        <h3>Price: {{ "$%.2f"|format(one_product[0][2]) }}</h3>
+        <h3>Qty: {{ one_product[0][3] }}</h3>
+        <hr>
+
+        <hr class="mb-5">
+
+    </div>
+
+    {{ super() }}
+{% endblock content %}
