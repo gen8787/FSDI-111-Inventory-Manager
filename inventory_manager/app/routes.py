@@ -37,7 +37,7 @@ def add_review(product_id):
         data.get("form-review"),
         product_id
     )
-    return redirect("/products")
+    return redirect(f"/product/{product_id}")
 
 
 # ---- A L L   P R O D U C T S
@@ -75,7 +75,7 @@ def update_product(product_id):
 def remove_product(product_id):
     out = delete_product(product_id)
     product_id = 1
-    return redirect(f"/products")
+    return redirect("/products")
 
 
 # ---- I N A C T I V E   P R O D U C T S
