@@ -56,18 +56,26 @@ def one_product(product_id):
 
 
 # ---- E D I T   P R O D U C T
-@app.route("/product/<product_id>/edit", methods=["PUT"])
+@app.route("/product/<product_id>/edit")
 def edit_product(product_id):
-    data = request.json
-    out = update_product(product_id, data)
-    return {"ok": out, "message": "Updated"}
+    one_product = get_one_product(product_id)
+    return render_template("edit_product.html", one_product = one_product)
+
+
+# ---- U P D A T E   P R O D U C T
+@app.route("/product/<product_id>/update", methods=["POST"])
+def update_product(product_id):
+    data = request.form
+    updated_product = update_one_product(product_id, data)
+    return redirect("/products")
 
 
 # ---- D E L E T E   P R O D U C T
 @app.route("/product/<product_id>/remove", methods=["GET"])
 def remove_product(product_id):
     out = delete_product(product_id)
-    return redirect("/products")
+    product_id = 1
+    return redirect(f"/products")
 
 
 # ---- I N A C T I V E   P R O D U C T S
@@ -81,7 +89,7 @@ def inactive_products():
 @app.route("/product/<product_id>/activate")
 def activate_product(product_id):
     out = set_is_active(product_id)
-    return redirect("/products/inactive")
+    return redirect(f"/products/inactive")
 
 
 # ---- P A G E   N O T   F O U N D

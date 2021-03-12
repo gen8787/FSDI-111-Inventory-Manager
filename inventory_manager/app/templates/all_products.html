@@ -5,7 +5,7 @@
     <div class="container">
         <h1 class="mb-3">Active Products</h1>
 
-        <div class="border rounded border-dark w-50 mx-1">
+        <div class="border rounded border-dark w-75 mx-1">
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -38,7 +38,11 @@
                             <td>{{prod[1]}}</td>
                             <td>{{"$%.2f"|format(prod[2])}}</td>
                             <td>{{prod[3]}}</td>
-                            <td><a href="/product/{{prod[0]}}">Details</a> &nbsp | &nbsp <a href="/product/{{prod[0]}}/remove">Deactivate</a></td>
+                            <td>
+                                <a href="/product/{{prod[0]}}">Details</a> &nbsp | &nbsp
+                                <a href="/product/{{prod[0]}}/remove">Deactivate</a> &nbsp | &nbsp
+                                <a href="/product/{{prod[0]}}/remove">+ Review</a>
+                            </td>
                         </tr>
                             {% endif %}
                             {% endfor %}

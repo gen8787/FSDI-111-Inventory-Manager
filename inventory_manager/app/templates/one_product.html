@@ -6,21 +6,23 @@
         <h1 class="mb-3">{{ one_product[0][1] }}</h1>
         <hr>
         <div class="row">
-            <div class="col-4">
-                <h3>Id: {{ one_product[0][0] }}</h3>
-                <h3>Price: {{ "$%.2f"|format(one_product[0][2]) }}</h3>
-                <h3>Qty: {{ one_product[0][3] }}</h3>
-                <button class="mt-5 mr-1 btn btn-warning" onClick="buttonClick()">Edit</button>
+            <div class="col-5 border border-primary rounded p-3">
+                <h4>Id: {{ one_product[0][0] }}</h4>
+                <h4>Price: {{ "$%.2f"|format(one_product[0][2]) }}</h4>
+                <h4 class="mb-5">Qty: {{ one_product[0][3] }}</h4>
+                <p>{{ one_product[0][4] }}</p>
+                <button id="btn-edit" class="mt-5 mr-1 btn btn-warning" onclick="editProduct('{{one_product[0][0]}}')">Edit</button>
 
                 {% if one_product[0][6] == 1 or one_product[0][6] == "True" %}
-                <button class="mt-5 btn btn-danger" onClick="buttonClick()">Deactivate</button>
+                <button class="mt-5 btn btn-danger" onclick="deactivate('{{one_product[0][0]}}')">Deactivate</button>
                 {% endif %}
                 {% if one_product[0][6] == 0 or one_product[0][6] == "False" %}
-                <button class="mt-5 btn btn-success" onClick="buttonClick()">Activate</button>
+                <button class="mt-5 btn btn-success" onclick="activate('{{one_product[0][0]}}')">Activate</button>
                 {% endif %}
             </div>
 
-            <div class="col-8">
+            <div class="col-7">
+                <h3>Add Review</h3>
                 <form class="" action="/review/{{one_product[0][0]}}/add" method="post">
         
                     <div class="form-group">

@@ -60,8 +60,8 @@ def get_reviews(product_id):
     return results
 
 
-# ---- U P D A T E   U S E R
-def update_product(product_id, values: dict):
+# ---- U P D A T E   P R O D U C T
+def update_one_product(product_id, values: dict):
     value_string = ",".join("%s=\"%s\"" % (key, val) for key, val in values.items())
     query = """UPDATE product SET %s WHERE id=?""" % value_string
     cursor = get_db()

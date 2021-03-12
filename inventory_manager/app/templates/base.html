@@ -14,7 +14,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link active" href="{{ url_for('index') }}">Add Product <span class="sr-only">(current)</span></a>
                 <a class="nav-link" href="{{ url_for('all_products') }}">Active Products</a>
                 <a class="nav-link" href="{{ url_for('inactive_products') }}">Inactive Products</a>
             </div>
@@ -27,7 +27,8 @@
     {% block footer %}
         <footer class="pl-3">
             <hr>
-            <p>Inventory Manager 2021</p>
+            <p>&#169 2021 Inventory Manager</p>
+            <p>FSDI 111: Intermediate Python and Flask | Competency Report</p>
         </footer>
     {% endblock footer %}
 

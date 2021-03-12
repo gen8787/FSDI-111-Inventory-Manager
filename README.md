@@ -2,17 +2,6 @@
 
 ## Inventory manager
 
-You are a full-stack developer working at an e-commerce company. Your company, Duckommerce.com focuses on importing and selling goods that are manufactured abroad which helps keep costs low and profits high. The main issue however is how long things take to reach your warehouse because of the long shipping times, so the procurement department is constantly monitoring items that are low in stock to order them before you run out.
-
-Sales have ramped up this quarter and the procurement department is having trouble tracking all of the different products you sell, so you've been asked to build an in-home software tool that allows them to manage all this data in a database, which will later be synced with other databases your operation relies on.
-
-You must build a product inventory management solution that allows the procurement department to create, read, update, (soft) delete and scan all of the contents of the "product" table which will, through a background process that one of your teammates has already built, constantly synchronize with the main database your online store relies on.
-
-The product table must have at least 8 columns: id (primary key, auto-incremental), name, price, description, category, quantity, unique_tag and active.
-
-Important note: The IT department has made it clear that they will limit access to this application to the procurement department via firewall settings, so it is not necessary to add a login screen for the time being.
-
-
 ### Acceptance criteria:
 
 - [x] 1. Users must be able to CRUD+S the product table data.
@@ -34,3 +23,18 @@ Important note: The IT department has made it clear that they will limit access 
 - [x] 6. You must submit a link to your GitHub repository that hosts the code.
 
 - [x] 7. Users can submit product reviews that other users may read.
+
+![](/inventory_manager/app/static/img/app1.png)
+![](/inventory_manager/app/static/img/app2.png)
+
+
+
+You are a full-stack developer working at an e-commerce company. Your company, Duckommerce.com focuses on importing and selling goods that are manufactured abroad which helps keep costs low and profits high. The main issue however is how long things take to reach your warehouse because of the long shipping times, so the procurement department is constantly monitoring items that are low in stock to order them before you run out.
+
+Sales have ramped up this quarter and the procurement department is having trouble tracking all of the different products you sell, so you've been asked to build an in-home software tool that allows them to manage all this data in a database, which will later be synced with other databases your operation relies on.
+
+You must build a product inventory management solution that allows the procurement department to create, read, update, (soft) delete and scan all of the contents of the "product" table which will, through a background process that one of your teammates has already built, constantly synchronize with the main database your online store relies on.
+
+The product table must have at least 8 columns: id (primary key, auto-incremental), name, price, description, category, quantity, unique_tag and active.
+
+Important note: The IT department has made it clear that they will limit access to this application to the procurement department via firewall settings, so it is not necessary to add a login screen for the time being.
